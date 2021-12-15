@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - main_volume:/data/db
+    networks:
+      - main_network
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/home/node/app
+      - /home/node/app/node_modules
+    networks:
+      - main_network
+  
+networks:
+  main_network:
+    name: la-generica-network
+    driver: bridge
+
+volumes:
+  main_volume:
+    name: la-generica-data

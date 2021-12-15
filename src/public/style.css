@@ -1,0 +1,18 @@
+@keyframes appear {
+    from {
+        opacity: 0;
+        visibility: hidden
+    } to {
+        opacity: 1;
+        visibility: visible
+    }
+}
+
+.visible_el {
+    display: inline;
+    animation: appear 1s;
+}
+
+.invisible_el {
+    display: none
+}
